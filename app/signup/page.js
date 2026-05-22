@@ -29,13 +29,15 @@ export default function SignupPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Registration failed');
 
+      // Auto-login after registration
       const loginRes = await fetch('/api/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),
       });
       if (loginRes.ok) {
-        router.push('/dashboard');
+        // New users always go to onboarding first
+        router.push('/onboarding');
         router.refresh();
       } else {
         router.push('/login');

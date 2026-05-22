@@ -27,7 +27,13 @@ export default function LoginPage() {
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.error || 'Login failed');
-      router.push('/dashboard');
+
+      // If user hasn't completed onboarding, send them there first
+      if (!data.user?.onboardingCompleted) {
+        router.push('/onboarding');
+      } else {
+        router.push('/dashboard');
+      }
       router.refresh();
     } catch (err) {
       setError(err.message);
@@ -154,6 +160,11 @@ export default function LoginPage() {
                 required
                 icon={<Lock size={16} />}
               />
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '-12px' }}>
+                <Link href="/forgot-password" style={{ color: '#3b82f6', fontSize: '13px', fontWeight: 600, textDecoration: 'none' }}>
+                  Forgot Password?
+                </Link>
+              </div>
 
               <button
                 type="submit"
