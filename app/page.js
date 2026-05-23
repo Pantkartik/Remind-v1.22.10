@@ -6,6 +6,5 @@ export default async function LandingPage() {
   const token = cookieStore.get('auth_token')?.value;
   const isLoggedIn = !!token;
 
-  return
-  <LandingClient isLoggedIn={isLoggedIn} />;
+  return <LandingClient isLoggedIn={isLoggedIn} />;
 }

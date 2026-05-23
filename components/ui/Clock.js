@@ -4,11 +4,17 @@ import { motion } from 'framer-motion';
 
 export default function Clock() {
   const [time, setTime] = useState(new Date());
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  if (!mounted) {
+    return <div style={{ height: '80px' }} /> // placeholder to avoid layout shift
+  }
 
   const formatTime = (date) => {
     const pad = (num) => String(num).padStart(2, '0');
