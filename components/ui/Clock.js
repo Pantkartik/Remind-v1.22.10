@@ -1,6 +1,5 @@
 'use client';
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
 
 export default function Clock() {
   const [time, setTime] = useState(new Date());

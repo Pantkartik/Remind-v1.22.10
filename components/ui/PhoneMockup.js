@@ -4,7 +4,6 @@ import {
   Search,
   MessageSquare,
   Briefcase,
-  TrendingUp,
   Battery,
   Wifi,
   Signal,

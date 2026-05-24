@@ -6,6 +6,9 @@ export default [
   js.configs.recommended,
   pluginReact.configs.flat.recommended,
   {
+    ignores: ['.next/**', 'node_modules/**', 'dist/**'],
+  },
+  {
     files: ['**/*.{js,mjs,cjs,jsx}'],
     languageOptions: {
       globals: {
